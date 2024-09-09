@@ -12,7 +12,224 @@
         </style>
     </head>
     <body>
-        <h1 style="color: blue;">Bootcamp Phincon Academy Batch 2</h1>
+        <h1 style="color: blue">Bootcamp Phincon Academy Batch 2</h1>
         <a href="https://phinconacademy.com">Masuk ke Phincon Academy</a>
+        <table id="table-bootcamp" border="1">
+            <thead>
+                <tr>
+                    <th>No</th>
+                    <th>Name</th>
+                    <th>Gender</th>
+                    <th>Phone Number</th>
+                    <th>Email</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>Fioreza Radhin</td>
+                    <td>Male</td>
+                    <td>085282810339</td>
+                    <td>fiorezarn@gmail.com</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>Ramadhanty</td>
+                    <td>Female</td>
+                    <td>089688224398</td>
+                    <td>rantidhanty@gmail.com</td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>Muhammad Fauzan</td>
+                    <td>Male</td>
+                    <td>085780010304</td>
+                    <td>fauzanmuh2468@gmail.com</td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td>Muhammad Rifqi Setiawan</td>
+                    <td>Male</td>
+                    <td>082124115178</td>
+                    <td>muhrifqis100@gmail.com</td>
+                </tr>
+                <tr>
+                    <td>5</td>
+                    <td>Davin Natan</td>
+                    <td>Male</td>
+                    <td>081241460464</td>
+                    <td>davidsagala2140@gmail.com</td>
+                </tr>
+                <tr>
+                    <td>6</td>
+                    <td>Egal Assegaf</td>
+                    <td>Male</td>
+                    <td>089636775660</td>
+                    <td>egalassegaf@gmail.com</td>
+                </tr>
+                <tr>
+                    <td>7</td>
+                    <td>Muhammad Farhan</td>
+                    <td>Male</td>
+                    <td>085218551265</td>
+                    <td>farhanfadml445@gmail.com</td>
+                </tr>
+            </tbody>
+        </table>
+        <table id="table-class" border="1">
+            <thead>
+                <tr>
+                    <th>No</th>
+                    <th>Class Name</th>
+                    <th>Instructor Name</th>
+                    <th>Class Code</th>
+                    <th>Student Qty</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>Fullstack Javascript</td>
+                    <td>Sigit</td>
+                    <td>FSJS</td>
+                    <td>5</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>Android Kotlin</td>
+                    <td>Haidar</td>
+                    <td>AND</td>
+                    <td>5</td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>IOS Swift</td>
+                    <td>Kholis</td>
+                    <td>IOS</td>
+                    <td>1</td>
+                </tr>
+            </tbody>
+        </table>
+        <script>
+            let table = document.getElementById("table-class").getElementsByTagName("tbody")[0];
+
+            function addRowAdjacentHTML(no, className, instructorName, classCode, studentQty) {
+                table.insertAdjacentHTML(
+                    "beforeend",
+                    `<tr>
+                  <td>${no}</td>  
+                  <td>${className}</td>  
+                  <td>${instructorName}</td>  
+                  <td>${classCode}</td>  
+                  <td>${studentQty}</td>  
+                    </tr>`
+                );
+            }
+            addRowAdjacentHTML(5, "Data Science", "Lita", "DS", 5);
+            addRowAdjacentHTML(6, "Devops", "Muto", "DEVOPS", 10);
+
+            function addRowInsertCell(data) {
+                table = document.getElementById("table-class");
+
+                // for (let index = 0; index < data.length; index++) {
+                //     let row = table.insertRow();
+                //     let cell1 = row.insertCell(0);
+                //     let cell2 = row.insertCell(1);
+                //     let cell3 = row.insertCell(2);
+                //     let cell4 = row.insertCell(3);
+                //     let cell5 = row.insertCell(4);
+                //     cell1.innerHTML = data[index].no;
+                //     cell2.innerHTML = data[index].className;
+                //     cell3.innerHTML = data[index].instructorName;
+                //     cell4.innerHTML = data[index].classCode;
+                //     cell5.innerHTML = data[index].studentQty;
+                // }
+                data.forEach(d => {
+                    let row = table.insertRow();
+                    let cell1 = row.insertCell(0);
+                    let cell2 = row.insertCell(1);
+                    let cell3 = row.insertCell(2);
+                    let cell4 = row.insertCell(3);
+                    let cell5 = row.insertCell(4);
+                    cell1.innerHTML = d.no;
+                    cell2.innerHTML = d.className;
+                    cell3.innerHTML = d.instructorName;
+                    cell4.innerHTML = d.classCode;
+                    cell5.innerHTML = d.studentQty;
+                });
+
+                parseInt()
+            }
+            // addRowInsertCell(7, "Digital Marketing", "Fauzan", "DM", 5);
+            // addRowInsertCell(8, "Quality Assurance", "Danty", "QA", 10);
+
+            let data = [
+                {
+                    no: 7,
+                    className: "Digital Marketing",
+                    instructorName: "Fauzan",
+                    classCode: "DM",
+                    studentQty: 5,
+                },
+                {
+                    no: 7,
+                    className: "Digital Marketing",
+                    instructorName: "Fauzan",
+                    classCode: "DM",
+                    studentQty: 5,
+                },
+                {
+                    no: 7,
+                    className: "Digital Marketing",
+                    instructorName: "Fauzan",
+                    classCode: "DM",
+                    studentQty: 5,
+                },
+                {
+                    no: 7,
+                    className: "Digital Marketing",
+                    instructorName: "Fauzan",
+                    classCode: "DM",
+                    studentQty: 5,
+                },
+                {
+                    no: 7,
+                    className: "Digital Marketing",
+                    instructorName: "Fauzan",
+                    classCode: "DM",
+                    studentQty: 5,
+                },
+                {
+                    no: 7,
+                    className: "Digital Marketing",
+                    instructorName: "Fauzan",
+                    classCode: "DM",
+                    studentQty: 5,
+                },
+                {
+                    no: 7,
+                    className: "Digital Marketing",
+                    instructorName: "Fauzan",
+                    classCode: "DM",
+                    studentQty: 5,
+                },
+                {
+                    no: 7,
+                    className: "Digital Marketing",
+                    instructorName: "Fauzan",
+                    classCode: "DM",
+                    studentQty: 5,
+                },
+                {
+                    no: 7,
+                    className: "Digital Marketing",
+                    instructorName: "Fauzan",
+                    classCode: "DM",
+                    studentQty: 5,
+                },
+            ];
+
+            addRowInsertCell(data);
+        </script>
     </body>
 </html>
