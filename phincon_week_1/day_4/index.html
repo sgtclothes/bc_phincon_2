@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Simple Calculator</title>
+        <link
+            rel="stylesheet"
+            href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@400;700&display=swap"
+        />
+        <style>
+            body {
+                font-size: 32px;
+            }
+            .container {
+                width: 480px;
+                margin: auto;
+                margin-top: 20px;
+            }
+            .container-segment {
+                display: flex;
+                flex-wrap: wrap;
+            }
+            .item-header {
+                width: 33.33%;
+                height: 100px;
+                box-sizing: border-box;
+                border: 1px solid #000;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+            .item-output {
+                width: 100%;
+                height: 80px;
+                box-sizing: border-box;
+                border: 1px solid #000;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+            .item-button {
+                box-sizing: border-box;
+                border: 1px solid #000;
+                background-color: #f1f1f1;
+                margin: 5px;
+                padding: 12px;
+                font-size: 30px;
+                align-items: center;
+                width: 100px;
+                height: 60px;
+                text-align: center;
+            }
+            .item-button-bottom {
+                box-sizing: border-box;
+                border: 1px solid #000;
+                background-color: #f1f1f1;
+                margin: 10px;
+                padding: 12px;
+                font-size: 30px;
+                align-items: center;
+                width: 210px;
+                height: 60px;
+                text-align: center;
+            }
+            .output {
+                width: 100%;
+                border-radius: 5px;
+                border: 1px solid black;
+                background-color: black;
+                height: 80%;
+                text-align: right;
+                padding-top: 20px;
+                padding-right: 10px;
+            }
+            .item-output .item-button,
+            .item-output .item-button-bottom {
+                border-radius: 10px;
+            }
+        </style>
+    </head>
+    <body id="background-body">
+        <div class="container">
+            <div class="container-segment">
+                <div class="item-header">
+                    <div id="title">Calc</div>
+                </div>
+                <div class="item-header">
+                    <div id="theme-title">Theme</div>
+                </div>
+                <div class="item-header">
+                    <select name="themes" id="themes">
+                        <option value="0">Theme 1</option>
+                        <option value="1">Theme 2</option>
+                        <option value="2">Theme 3</option>
+                    </select>
+                </div>
+            </div>
+            <div class="container-segment" style="margin-bottom: 10px">
+                <div class="item-output">
+                    <div id="output" class="output screen-background"></div>
+                </div>
+            </div>
+            <div class="container-segment screen-background" style="border-radius: 5px">
+                <div class="item-output">
+                    <div id="7" class="item-button">7</div>
+                    <div id="8" class="item-button">8</div>
+                    <div id="9" class="item-button">9</div>
+                    <div id="DEL" class="item-button">DEL</div>
+                </div>
+                <div class="item-output">
+                    <div id="4" class="item-button">4</div>
+                    <div id="5" class="item-button">5</div>
+                    <div id="6" class="item-button">6</div>
+                    <div id="+" class="item-button">+</div>
+                </div>
+                <div class="item-output">
+                    <div id="1" class="item-button">1</div>
+                    <div id="2" class="item-button">2</div>
+                    <div id="3" class="item-button">3</div>
+                    <div id="-" class="item-button">-</div>
+                </div>
+                <div class="item-output">
+                    <div id="." class="item-button">.</div>
+                    <div id="0" class="item-button">0</div>
+                    <div id="/" class="item-button">/</div>
+                    <div id="x" class="item-button">x</div>
+                </div>
+                <div class="item-output">
+                    <div id="RESET" class="item-button-bottom">RESET</div>
+                    <div id="=" class="item-button-bottom">=</div>
+                </div>
+            </div>
+        </div>
+        <script>
+            const themes = [
+                {
+                    name: "Theme 1",
+                    backgrounds: {
+                        main: "hsl(222, 26%, 31%)",
+                        toggle: "hsl(223, 31%, 20%)",
+                        screen: "hsl(224, 36%, 15%)",
+                    },
+                    keys: {
+                        button1: {
+                            background: "hsl(225, 21%, 49%)",
+                            shadow: "hsl(224, 28%, 35%)",
+                        },
+                        button2: {
+                            background: "hsl(6, 63%, 50%)",
+                            shadow: "hsl(6, 70%, 34%)",
+                        },
+                        button3: {
+                            background: "hsl(30, 25%, 89%)",
+                            shadow: "hsl(28, 16%, 65%)",
+                        },
+                    },
+                    text: {
+                        default: "hsl(221, 14%, 31%)",
+                        white: "hsl(0, 0%, 100%)",
+                    },
+                },
+                {
+                    name: "Theme 2",
+                    backgrounds: {
+                        main: "hsl(0, 0%, 90%)",
+                        toggle: "hsl(0, 5%, 81%)",
+                        screen: "hsl(0, 0%, 93%)",
+                    },
+                    keys: {
+                        button1: {
+                            background: "hsl(185, 42%, 37%)",
+                            shadow: "hsl(185, 58%, 25%)",
+                        },
+                        button2: {
+                            background: "hsl(25, 98%, 40%)",
+                            shadow: "hsl(25, 99%, 27%)",
+                        },
+                        button3: {
+                            background: "hsl(45, 7%, 89%)",
+                            shadow: "hsl(35, 11%, 61%)",
+                        },
+                    },
+                    text: {
+                        default: "hsl(60, 10%, 19%)",
+                        white: "hsl(0, 0%, 100%)",
+                    },
+                },
+                {
+                    name: "Theme 3",
+                    backgrounds: {
+                        main: "hsl(268, 75%, 9%)",
+                        toggle: "hsl(268, 71%, 12%)",
+                        screen: "hsl(268, 71%, 12%)",
+                    },
+                    keys: {
+                        button1: {
+                            background: "hsl(281, 89%, 26%)",
+                            shadow: "hsl(285, 91%, 52%)",
+                        },
+                        button2: {
+                            background: "hsl(176, 100%, 44%)",
+                            shadow: "hsl(177, 92%, 70%)",
+                        },
+                        button3: {
+                            background: "hsl(268, 47%, 21%)",
+                            shadow: "hsl(290, 70%, 36%)",
+                        },
+                    },
+                    text: {
+                        default: "hsl(52, 100%, 62%)",
+                        darkBlue: "hsl(198, 20%, 13%)",
+                        white: "hsl(0, 0%, 100%)",
+                    },
+                },
+            ];
+            let backgroundBody = document.getElementById("background-body");
+            let screenBackgrounds = document.getElementsByClassName("screen-background");
+            let itemButtons = document.getElementsByClassName("item-button");
+            let itemButtonBottoms = document.getElementsByClassName("item-button-bottom");
+            let output = document.getElementById("output");
+            let title = document.getElementById("title");
+            let selectTheme = document.getElementById("themes");
+            let changeTheme = (themeVal) => {
+                new Array(screenBackgrounds.length).fill(null).map((_, index) => {
+                    screenBackgrounds[index].style.backgroundColor = themes[themeVal]["backgrounds"]["screen"];
+                });
+                new Array(itemButtons.length).fill(null).map((_, index) => {
+                    itemButtons[index].style.backgroundColor = themes[themeVal]["keys"]["button3"]["background"];
+                    itemButtons[index].style.boxShadow = "2px 2px " + themes[themeVal]["keys"]["button3"]["shadow"];
+                    itemButtons[index].style.cursor = "pointer";
+                    itemButtons[index].style.fontWeight = "bold";
+                    itemButtons[index].style.color = themes[themeVal]["text"]["default"];
+                    if (itemButtons[index].id === "DEL") {
+                        itemButtons[index].style.backgroundColor = themes[themeVal]["keys"]["button1"]["background"];
+                        itemButtons[index].style.boxShadow = "2px 2px " + themes[themeVal]["keys"]["button1"]["shadow"];
+                        itemButtons[index].style.color = themes[themeVal]["text"]["white"];
+                    }
+                });
+                new Array(itemButtonBottoms.length).fill(null).map((_, index) => {
+                    itemButtonBottoms[index].style.backgroundColor = themes[themeVal]["keys"]["button3"]["background"];
+                    itemButtonBottoms[index].style.boxShadow =
+                        "2px 2px " + themes[themeVal]["keys"]["button3"]["shadow"];
+                    itemButtonBottoms[index].style.cursor = "pointer";
+                    itemButtonBottoms[index].style.fontWeight = "bold";
+                    if (itemButtonBottoms[index].id === "RESET") {
+                        itemButtonBottoms[index].style.backgroundColor =
+                            themes[themeVal]["keys"]["button1"]["background"];
+                        itemButtonBottoms[index].style.boxShadow =
+                            "2px 2px " + themes[themeVal]["keys"]["button1"]["shadow"];
+                        itemButtonBottoms[index].style.color = themes[themeVal]["text"]["white"];
+                    } else if (itemButtonBottoms[index].id === "=") {
+                        itemButtonBottoms[index].style.backgroundColor =
+                            themes[themeVal]["keys"]["button2"]["background"];
+                        itemButtonBottoms[index].style.boxShadow =
+                            "2px 2px " + themes[themeVal]["keys"]["button2"]["shadow"];
+                        itemButtonBottoms[index].style.color = themes[themeVal]["text"]["white"];
+                    }
+                });
+                screenBackgrounds[1].style.backgroundColor = themes[themeVal]["backgrounds"]["screen"];
+                backgroundBody.style.backgroundColor = themes[themeVal]["backgrounds"]["main"];
+                title.style.color = themes[themeVal]["text"]["white"];
+            };
+            selectTheme.addEventListener("change", (e) => {
+                changeTheme(e.target.value);
+            });
+            changeTheme(0);
+            output.style.color = "white";
+            [1, 2, 3, 4, 5, 6, 7, 8, 9, 0, "+", "-", "/", "x", "."].map((val) => {
+                document.getElementById(String(val)).addEventListener("click", () => {
+                    output.textContent === "" || output.textContent == 0
+                        ? (output.textContent = val)
+                        : (output.textContent += val);
+                });
+            });
+            document.getElementById("DEL").addEventListener("click", () => {
+                output.textContent = output.textContent.length > 1 ? output.textContent.slice(0, -1) : 0;
+            });
+            document.getElementById("RESET").addEventListener("click", () => {
+                output.textContent = 0;
+            });
+            document.getElementById("=").addEventListener("click", () => {
+                console.log(eval(output.textContent));
+            });
+        </script>
+    </body>
+</html>

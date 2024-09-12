@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+    </head>
+    <body>
+        <div id="name" class="fs" name="fs-name">Name</div>
+        <script>
+            let a = [1, 2, [4, 5, [6, 7, 8, [9, 10]]], [11, 12], [13, 14, [15, 16, [17, 18]]]][4][2][2][1];
+            console.log(a);
+
+            let b = {
+                nama: {
+                    pendek: "Danty",
+                    panjang: "Ramadhanty",
+                    data: {
+                        tempat: {
+                            kota: "Bekasi",
+                        },
+                    },
+                },
+                kelas: "Fullstack Javascript",
+                angka: [
+                    10,
+                    20,
+                    {
+                        float: {
+                            tes: [1.3, 3.5, [11, [12]]],
+                            tes2: [2.5, 4.7],
+                        },
+                    },
+                ],
+            }["angka"][2]['float']['tes'][2][1][0];
+
+            console.log(b);
+
+            const name = document.getElementsByClassName("fs")[0];
+            console.log(name);
+        </script>
+    </body>
+</html>

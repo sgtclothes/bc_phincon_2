@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="id">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Menyalakan Lampu</title>
+        <style>
+            #lampu {
+                width: 150px;
+                height: 200px;
+            }
+            button {
+                margin-top: 20px;
+                padding: 10px 20px;
+                font-size: 16px;
+                cursor: pointer;
+            }
+        </style>
+    </head>
+    <body style="background-color: black;">
+        <div style="text-align: center; margin-top: 100px;">
+            <h1 style="color: white;">Toggling Lampu</h1>
+            <img id="lampu" src="assets/lampu-mati.png" alt="Lampu" />
+            <br />
+            <button id="tombolLampu">Nyalakan Lampu</button>
+        </div>
+        <script>
+            let lampuMenyala = false;
+
+            const gambarLampu = document.getElementById("lampu");
+            const tombolLampu = document.getElementById("tombolLampu");
+
+            tombolLampu.addEventListener("click", function () {
+                if (lampuMenyala) {
+                    gambarLampu.src = "assets/lampu-mati.png";
+                    tombolLampu.textContent = "Nyalakan Lampu";
+                    lampuMenyala = false;
+                } else {
+                    gambarLampu.src = "assets/lampu-nyala.png";
+                    tombolLampu.textContent = "Matikan Lampu";
+                    lampuMenyala = true;
+                }
+            });
+        </script>
+    </body>
+</html>
