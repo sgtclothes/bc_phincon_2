@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Guess the Number Game</title>
+        <link rel="stylesheet" href="./styles/guessNumber.css" />
+    </head>
+    <body>
+        <div class="game-container">
+            <h1>Tebak Angka!</h1>
+            <p>Masukkan angka antara 1 hingga 100 dan tekan "Tebak".</p>
+            <div class="input-container">
+                <input type="number" id="guessInput" placeholder="Masukkan angka" />
+                <button id="submitGuess">Tebak</button>
+            </div>
+            <p id="timer">Waktu tersisa: 30 detik</p>
+            <p id="result"></p>
+        </div>
+        <script src="./javascripts/guessNumber.js"></script>
+    </body>
+</html>

@@ -1,0 +1,41 @@
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    padding: 20px;
+}
+
+.game-container {
+    display: grid;
+    grid-template-rows: auto auto auto;
+    justify-items: center;
+    gap: 20px;
+}
+
+.input-container {
+    display: grid;
+    grid-template-columns: auto auto;
+    gap: 10px;
+}
+
+input[type="number"] {
+    width: 100px;
+    padding: 10px;
+}
+
+button {
+    padding: 10px 20px;
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+@media (max-width: 600px) {
+    .input-container {
+        grid-template-columns: auto;
+    }
+}

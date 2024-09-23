@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Battle</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" />
+    </head>
+    <body>
+        <div class="container mt-5 text-center">
+            <h1>Match <span id="currentMatch"></span> dari <span id="totalMatch"></span></h1>
+            <div class="row mt-4">
+                <div class="col-6">
+                    <h3>Player 1</h3>
+                    <button class="btn btn-danger" onclick="play('player1', 'gunting')">Gunting</button>
+                    <button class="btn btn-secondary" onclick="play('player1', 'batu')">Batu</button>
+                    <button class="btn btn-warning" onclick="play('player1', 'kertas')">Kertas</button>
+                </div>
+                <div class="col-6">
+                    <h3>Player 2</h3>
+                    <button class="btn btn-danger" onclick="play('player2', 'gunting')">Gunting</button>
+                    <button class="btn btn-secondary" onclick="play('player2', 'batu')">Batu</button>
+                    <button class="btn btn-warning" onclick="play('player2', 'kertas')">Kertas</button>
+                </div>
+            </div>
+        </div>
+
+        <script>
+            let player1Choice, player2Choice;
+
+            document.addEventListener("DOMContentLoaded", function () {
+                document.getElementById("totalMatch").textContent = localStorage.getItem("matchCount");
+                document.getElementById("currentMatch").textContent = localStorage.getItem("currentMatch");
+            });
+
+            function play(player, choice) {
+                if (player === "player1") {
+                    player1Choice = choice;
+                } else if (player === "player2") {
+                    player2Choice = choice;
+                }
+
+                if (player1Choice && player2Choice) {
+                    determineWinner();
+                }
+            }
+
+            function determineWinner() {
+                const currentMatch = parseInt(localStorage.getItem("currentMatch"));
+                const totalMatch = parseInt(localStorage.getItem("matchCount"));
+                let player1Score = parseInt(localStorage.getItem("player1Score"));
+                let player2Score = parseInt(localStorage.getItem("player2Score"));
+
+                if (player1Choice === player2Choice) {
+                    // Tie
+                } else if (
+                    (player1Choice === "gunting" && player2Choice === "kertas") ||
+                    (player1Choice === "batu" && player2Choice === "gunting") ||
+                    (player1Choice === "kertas" && player2Choice === "batu")
+                ) {
+                    player1Score++;
+                } else {
+                    player2Score++;
+                }
+
+                localStorage.setItem("player1Score", player1Score);
+                localStorage.setItem("player2Score", player2Score);
+
+                if (currentMatch < totalMatch) {
+                    localStorage.setItem("currentMatch", currentMatch + 1);
+                    window.location.reload();
+                } else {
+                    window.location.href = "result.html";
+                }
+            }
+        </script>
+    </body>
+</html>

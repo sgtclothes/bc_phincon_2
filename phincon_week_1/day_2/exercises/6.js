@@ -6,13 +6,12 @@ function isPalindromeWithReverse(word) {
 
 function isPalindromeWithFor(word) {
     let lower = word.toLowerCase();
-    let reverseWord = [];
+    let reverseWord = "";
     for (let index = lower.length - 1; index > -1; index--) {
-        reverseWord.push(lower[index]);
+        reverseWord += lower[index];
     }
-    reverseWord = reverseWord.join("");
     return lower === reverseWord;
 }
 
-console.log(isPalindromeWithReverse("katak"))
+console.log(isPalindromeWithReverse("katAK"))
 console.log(isPalindromeWithFor("katak"))

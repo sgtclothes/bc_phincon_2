@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+    </head>
+    <body>
+        <script type="module">
+            import { whoWon, add } from "./tictactoe.js";
+            let board = [
+                ["o", "x", "x"],
+                ["o", "x", "x"],
+                ["o", "x", "x"],
+            ];
+            let realObject = {
+                employees: [
+                    { firstName: "John", lastName: "Doe" },
+                    { firstName: "Anna", lastName: "Smith" },
+                    { firstName: "Peter", lastName: "Jones" },
+                ],
+            };
+        //     let text =
+        //         '{ "employees" : [' +
+        //         '{ "firstName":"John" , "lastName":"Doe" },' +
+        //         '{ "firstName":"Anna" , "lastName":"Smith" },' +
+        //         '{ "firstName":"Peter" , "lastName":"Jones" } ]}';
+            console.log(JSON.parse(JSON.stringify(realObject)));
+        </script>
+    </body>
+</html>

@@ -5,3 +5,4 @@ function hitungKemunculanKata(kalimat, kata) {
     }, 0);
 }
 console.log(hitungKemunculanKata("Saya suka makanmakanmakanmakan nasi, saya juga suka minum air", "makan"));
+console.log("aku makan nasi".split("a", 6))

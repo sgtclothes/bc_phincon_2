@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>React Application</title>
+        <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+        <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+        <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+        <style>
+            .blue {
+                color: blue;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="container"></div>
+        <div></div>
+        <script type="text/babel">
+            let SideBar = () => {
+                return (
+                    <>
+                        <div>Sidebar</div>
+                    </>
+                );
+            };
+            function Header({ name, data }) {
+                const id = "container-2";
+                const className = "blue";
+                return (
+                    <>
+                        <div id={id} className={className}>
+                            {name}
+                        </div>
+                        <div>{data}</div>
+                    </>
+                );
+            }
+            function Carousel() {
+                return (
+                    <>
+                        <img
+                            src="https://media.licdn.com/dms/image/v2/D560BAQG99Xf8yTVZAw/company-logo_200_200/company-logo_200_200/0/1702864298171?e=2147483647&v=beta&t=vlV9cqla3qLOcRU7NetWjY3dL39FConfn5WO9uQwgxU"
+                            alt="#"
+                        />
+                    </>
+                );
+            }
+            function Home() {
+                const [name, setName] = React.useState("");
+                return (
+                    <>
+                        <Header />
+                        <Carousel />
+                        <Table />
+                        <Buttons />
+                        <SideBar />
+                        <Form name={name} setName={setName} />
+                    </>
+                );
+            }
+            function Table() {
+                const headerColumns = ["no", "name", "phoneNumber", "email", "address"];
+                return (
+                    <>
+                        <table border="1">
+                            <thead>
+                                <tr>
+                                    {headerColumns.map((headerColumn, index) => (
+                                        <th key={index}>{headerColumn}</th>
+                                    ))}
+                                </tr>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+                    </>
+                );
+            }
+
+            function Buttons() {
+                return (
+                    <>
+                        <button onClick={() => getAlert("TESTING")}>Click Me!</button>
+                    </>
+                );
+            }
+
+            function PassScoreSuccess() {
+                return <div style={{ color: colorScore["pass"] }}>{score}</div>;
+            }
+            function PassScoreFailed() {
+                return <div style={{ color: colorScore["failed"] }}>{score}</div>;
+            }
+
+            function Form({ name, setName }) {
+                return (
+                    <>
+                        <div>{name}</div>
+                        <form>
+                            <input type="text" value={name} onChange={(e) => setName(e.target.value)} />
+                        </form>
+                    </>
+                );
+            }
+            ReactDOM.createRoot(document.getElementById("container")).render(<Home />);
+        </script>
+    </body>
+</html>

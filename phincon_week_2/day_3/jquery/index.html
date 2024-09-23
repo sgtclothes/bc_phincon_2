@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>JQuery</title>
+        <script src="./jquery.3.7.1.js"></script>
+        <link rel="stylesheet" href="https://cdn.datatables.net/2.1.6/css/dataTables.dataTables.css" />
+        <script src="https://cdn.datatables.net/2.1.6/js/dataTables.js"></script>
+    </head>
+    <body>
+        <div id="container">Halo Phincon</div>
+        <button name="btn">Click</button>
+        <button name="btn">Click</button>
+        <button name="btn">Click</button>
+        <button name="btn">Click</button>
+        <input id="inputData" type="text" />
+        <select name="select" id="select">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+        </select>
+        <div id="container-gender">
+            <label for="lk">Laki-laki</label>
+            <input type="radio" name="gender" id="lk" value="lk" />
+            <label for="pr">Perempuan</label>
+            <input type="radio" name="gender" id="pr" value="pr" />
+        </div>
+        <table id="myTable" class="display">
+            <thead>
+                <tr>
+                    <th>Column 1</th>
+                    <th>Column 2</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Row 1 Data 1</td>
+                    <td>Row 1 Data 2</td>
+                </tr>
+                <tr>
+                    <td>Row 2 Data 1</td>
+                    <td>Row 2 Data 2</td>
+                </tr>
+            </tbody>
+        </table>
+        <script>
+            $("#container").css("color", "red");
+            document.getElementById("container").style.color = "red";
+
+            $("#inputData").on("input", function () {
+                console.log($(this).val());
+            });
+
+            $("#select").on("change", function () {
+                console.log($(this).val());
+            });
+
+            $("[name='gender']").on("change", () => {
+                console.log($("[name='gender']:checked").val());
+            });
+
+            $("[name='gender']")
+                .attr("class", "radio")
+                .attr("data", "ok")
+                .click(() => {
+                    alert("OK");
+                })
+                .css("cursor", "pointer");
+
+            document.getElementsByName("gender").forEach((g) => {
+                g.className = "radio";
+            });
+            $("#myTable").DataTable();
+
+            //     $.ajax({
+            //         method: "GET",
+            //         url: "https://pokeapi.co/api/v2/pokemon",
+            //     }).done((response) => {
+            //         console.log(response);
+            //     });
+            let data = "data:saya?oke";
+            let obj = {
+                "data:saya?oke": "test",
+                "name": "Sigit",
+            };
+            console.log(obj[data]);
+            obj.0;
+        </script>
+    </body>
+</html>

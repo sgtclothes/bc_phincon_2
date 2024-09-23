@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>React with CDN</title>
+        <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+        <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+        <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+        <style>
+            .container {
+                max-width: 600px;
+                margin: 20px auto;
+                padding: 20px;
+                border: 1px solid #ddd;
+                border-radius: 8px;
+            }
+            .header,
+            .content,
+            .footer {
+                margin-bottom: 20px;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="root"></div>
+        <script type="text/babel">
+            const { createRoot } = ReactDOM;
+            function Header() {
+                return (
+                    <div className="header">
+                        <h1>Header Component</h1>
+                    </div>
+                );
+            }
+            function Content() {
+                return (
+                    <div className="content">
+                        <p>This is the content of the page.</p>
+                    </div>
+                );
+            }
+            function Footer() {
+                return (
+                    <div className="footer">
+                        <p>Footer Component &copy; 2024</p>
+                    </div>
+                );
+            }
+            function App() {
+                return (
+                    <div className="container">
+                        <Header />
+                        <Content />
+                        <Footer />
+                    </div>
+                );
+            }
+            createRoot(document.getElementById("root")).render(<App />);
+        </script>
+    </body>
+</html>
