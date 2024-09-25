@@ -1,0 +1,115 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans",
+        "Droid Sans", "Helvetica Neue", sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+    font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
+}
+
+/* styles.css */
+body {
+    font-family: "Roboto", sans-serif;
+    background-color: #f7f7f7;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.app-container {
+    width: 100%;
+    max-width: 400px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    background-color: #fff;
+    transition: background-color 0.3s ease;
+}
+
+.app-container.light {
+    background-color: white;
+}
+
+.app-container.dark {
+    background-color: #343a40;
+    color: white;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-weight: 700;
+}
+
+.task-list {
+    list-style: none;
+    padding: 0;
+    margin-top: 20px;
+}
+
+.task-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    background-color: #f1f1f1;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    transition: background-color 0.2s;
+}
+
+.task-item:hover {
+    background-color: #e0e0e0;
+}
+
+input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+button {
+    margin: 5px 0;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+button, button:hover {
+    background-color: #007bff;
+    color: white;
+}
+
+.delete-btn {
+    background-color: #dc3545;
+    color: white;
+}
+
+.delete-btn:hover {
+    background-color: #c82333;
+}
+
+.theme-toggle-btn {
+    margin-bottom: 15px;
+    width: 100%;
+    background-color: #007bff;
+    color: white;
+}
+
+.theme-toggle-btn:hover {
+    background-color: #0056b3;
+}
