@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>FlipDown Countdown</title>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flipdown@0.3.2/dist/flipdown.css" />
+        <style>
+            body {
+                background-color: #3a3a3a;
+                font-family: Arial, sans-serif;
+                text-align: center;
+                color: white;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 100vh;
+                margin: 0;
+            }
+            h1 {
+                margin-bottom: 0;
+            }
+            .description {
+                color: #c5c5c5;
+                margin-bottom: 20px;
+            }
+            #flipdown {
+                margin-top: 20px;
+            }
+            .version-info {
+                margin-top: 30px;
+                color: #c5c5c5;
+                font-size: 0.9rem;
+            }
+            .button-container {
+                margin-top: 20px;
+            }
+            .button {
+                background-color: #505050;
+                color: #ffffff;
+                padding: 10px 20px;
+                text-decoration: none;
+                border-radius: 5px;
+                font-weight: bold;
+            }
+            .button:hover {
+                background-color: #656565;
+            }
+        </style>
+    </head>
+    <body>
+        <div>
+            <div id="flipdown" class="flipdown"></div>
+        </div>
+
+        <script src="https://cdn.jsdelivr.net/npm/flipdown@0.3.2/dist/flipdown.min.js"></script>
+        <script>
+            // Calculate the time for the countdown (24 hours from now)
+            const endTime = new Date().getTime() / 1000 + 24 * 3600;
+
+            // Initialize FlipDown
+            new FlipDown(endTime).start();
+        </script>
+    </body>
+</html>

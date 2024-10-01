@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+        <style>
+            #tab-list {
+                display: flex;
+                list-style: none;
+                margin: 0;
+                padding: 0;
+            }
+            #tab-list li {
+                padding: 10px;
+                border: 1px solid gray;
+                cursor: pointer;
+            }
+            #tab-list li.active {
+                background-color: lightblue;
+            }
+            #tab-content div {
+                display: none;
+                padding: 20px;
+                border: 1px solid gray;
+            }
+            #tab-content div.active {
+                display: block;
+            }
+        </style>
+    </head>
+    <body>
+        <header></header>
+        <main>
+            <section id="section">
+                <div id="container">
+                    <div class="c">
+                        <div class="d"></div>
+                    </div>
+                    <div class="c"></div>
+                    <div class="c"></div>
+                    <div class="c"></div>
+                    <div class="c"></div>
+                </div>
+                <div class="c"></div>
+            </section>
+            <div id="e">
+                <p>test</p>
+                <p>testing</p>
+                <p>testing123</p>
+                <p>testing123456</p>
+                <div id="f">
+                    <ul>
+                        <li>Cat</li>
+                        <li>Dog</li>
+                        <li>Frog</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="content"></div>
+            <div id="article" class="content">
+                <div id="p"></div>
+                <a href="#">link to google</a>
+                <input type="text" />
+                <label for="">phincon</label>
+                <label for="">academy</label>
+                <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa obcaecati doloribus eos minus
+                    doloremque. Quod in, inventore, quaerat mollitia minima animi deleniti ipsam laudantium, enim
+                    cupiditate incidunt autem saepe obcaecati!
+                </p>
+                <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio consequuntur vero cumque error
+                    laboriosam vitae ab reiciendis voluptas fugit laudantium ex quisquam veniam sunt alias iusto
+                    facilis, debitis provident aperiam!
+                </p>
+            </div>
+            <p class="content"></p>
+            <div id="tabs">
+                <ul id="tab-list">
+                    <li id="tab-1" class="active">Tab 1</li>
+                    <li id="tab-2">Tab 2</li>
+                    <li id="tab-3">Tab 3</li>
+                </ul>
+                <div id="tab-content">
+                    <div id="content-1" class="active">Content 1</div>
+                    <div id="content-2">Content 2</div>
+                    <div id="content-3">Content 3</div>
+                </div>
+            </div>
+        </main>
+        <footer></footer>
+        <script>
+            // const container = document.getElementById("container");
+            // const section = document.getElementById("section");
+            // const c = container.getElementsByClassName("c");
+            // const cSection = section.getElementsByClassName("c");
+            // for (let index = 0; index < c.length; index++) {
+            //     const element = c[index];
+            //     const d = element.getElementsByClassName("d");
+            //     console.log(d);
+            // }
+            // console.log(container.nextElementSibling);
+            // const e = container.parentElement.nextElementSibling;
+            // console.log(container.parentElement.nextElementSibling.children);
+            // console.log(container.parentElement.nextElementSibling.firstElementChild);
+            // console.log(
+            //     container.parentElement.nextElementSibling.lastElementChild.children[0].children[0].parentElement
+            // );
+            console.log($);
+            const content = $("div#article.content").find("div");
+            console.log($($(content)[0].nextElementSibling).nextAll());
+
+            const tabList = document.getElementById("tab-list");
+            const tabContent = document.getElementById("tab-content");
+            console.log(tabList.children);
+            console.log(Array.from(tabList.children));
+            tabList.addEventListener("click", (event) => {
+                tabList.querySelector(".active").classList.remove("active");
+                const tab = event.target;
+                tab.classList = "active";
+                tabContent.querySelector(".active").classList.remove("active");
+                const index = Array.from(tabList.children).indexOf(tab);
+                const content = tabContent.children[index];
+                content.classList.add("active");
+            });
+
+            let counter = () => {
+                Array(1000)
+                    .fill(null)
+                    .map((_, index) => {
+                        console.log(index);
+                    });
+            };
+            performance.mark("start");
+            counter();
+            performance.mark("end");
+            performance.measure("counter", "start", "end");
+            let entry = performance.getEntriesByName("counter")[0];
+            console.log(entry.duration);
+        </script>
+    </body>
+</html>
