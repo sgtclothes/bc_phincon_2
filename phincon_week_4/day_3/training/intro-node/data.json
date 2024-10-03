@@ -1,0 +1,21 @@
+{
+    "Phincon Academy": {
+        "bootcamps": [
+            {
+                "name": "Fullstack Javascript",
+                "code": "FSJS",
+                "students": ["Danty", "Rifqi", "David"]
+            },
+            {
+                "name": "Android Kotlin",
+                "code": "AK",
+                "students": ["Hansen", "Andy"]
+            },
+            {
+                "name": "IOS Swift",
+                "code": "AS",
+                "students": ["Irvan"]
+            }
+        ]
+    }
+}
