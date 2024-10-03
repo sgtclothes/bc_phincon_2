@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Phincon Academy</title>
+    </head>
+    <body>
+        <div id="container"></div>
+        <div><label for="numberOne">Angka 1 : </label><input id="numberOne" type="number" /></div>
+        <div><label for="numberTwo">Angka 2 : </label><input id="numberTwo" type="number" /></div>
+        <div><label for="numberThree">Angka 3 : </label><input id="numberThree" type="text" /></div>
+        <p>Please select your operator:</p>
+        <input type="radio" id="+" name="operator" value="+" /><label for="+">+</label><br />
+        <input type="radio" id="-" name="operator" value="-" /><label for="-">-</label><br />
+        <input type="radio" id="*" name="operator" value="*" /><label for="*">*</label><br />
+        <input type="radio" id="/" name="operator" value="/" /><label for="/">/</label><br />
+        <br />
+        <div><label for="output">Output : </label><input disabled id="output" type="text" /></div>
+        <div><button id="btn-submit">Submit</button></div>
+        <script>
+            async function getDataText() {
+                const response = await fetch("http://localhost:3000");
+                const text = await response.text();
+                // console.log(text);
+                document.getElementById("container").textContent = text;
+            }
+            //     getDataText();
+            async function getStudentByID(id) {
+                const response = await fetch("http://localhost:3000/api/" + id);
+                // console.log(response);
+                const json = await response.json();
+                // console.log(json);
+            }
+            getStudentByID(2);
+
+            const sum = async (numberOne, numberTwo) => {
+                try {
+                    const data = {
+                        numberOne: numberOne,
+                        numberTwo: numberTwo,
+                    };
+                    const response = await fetch("http://localhost:3000/add", {
+                        headers: {
+                            "Content-Type": "application/json",
+                        },
+                        method: "POST",
+                        body: JSON.stringify(data),
+                    });
+                    const json = await response.json();
+                    const output = json.output;
+                    console.log(output);
+                    document.getElementById("output").value = output;
+                } catch (error) {
+                    alert("Silahkan masukkan angka yang sesuai");
+                }
+            };
+
+            const calculate = async (numberOne, numberTwo, operator) => {
+                try {
+                    const data = {
+                        numberOne: numberOne,
+                        numberTwo: numberTwo,
+                        operator: operator,
+                    };
+                    const response = await fetch("http://localhost:3000/calculate", {
+                        headers: {
+                            "Content-Type": "application/json",
+                        },
+                        method: "POST",
+                        body: JSON.stringify(data),
+                    });
+                    const json = await response.json();
+                    const output = json.output;
+                    console.log(output);
+                    document.getElementById("output").value = output;
+                } catch (error) {
+                    alert("Silahkan masukkan angka yang sesuai");
+                }
+            };
+
+            document.getElementById("btn-submit").addEventListener("click", () => {
+                const numberOne = document.getElementById("numberOne").value;
+                const numberTwo = document.getElementById("numberTwo").value;
+                const operator = document.querySelector('input[name="operator"]:checked').value;
+                calculate(numberOne, numberTwo, operator);
+            });
+
+            document.getElementById("numberThree").addEventListener("input", (event) => {
+                if (event.target.value.length <= 5) {
+                    console.log("VALUE : ", event.target.value);
+                } else {
+                    let newValue = "";
+                    for (let index = 0; index < event.target.value.length; index++) {
+                        const element = event.target.value[index];
+                        if (index < 5) {
+                            newValue += element;
+                        }
+                    }
+                    document.getElementById("numberThree").value = newValue;
+                }
+            });
+        </script>
+    </body>
+</html>
