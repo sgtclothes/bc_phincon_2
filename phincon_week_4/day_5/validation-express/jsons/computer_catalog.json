@@ -1,0 +1,6 @@
+[
+    { "brand": "Brand A", "model": "Model-X-2020", "price": "$500" },
+    { "brand": "Brand A", "model": "Model-X-2023", "price": "$780" },
+    { "brand": "Brand B", "model": "Model-Y-2021", "price": "$650" },
+    { "brand": "Brand C", "model": "Model-X-2024", "price": "$1000" }
+]

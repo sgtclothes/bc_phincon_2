@@ -5,6 +5,7 @@ const port = process.env.PORT || 3000;
 const cors = require("cors");
 const userRoutes = require("./routes/users");
 const roleRoutes = require("./routes/roles");
+const productRoutes = require("./routes/products");
 
 app.use(express.json());
 app.use(cors());
@@ -94,6 +95,7 @@ app.get("/profile/:id", middleware, middleware2, middleware3, (req, res) => {
 
 app.use("/users", userRoutes);
 app.use("/roles", roleRoutes);
+app.use("/products", productRoutes);
 
 app.listen(port, () => {
     console.log("Server started and listen on port " + port);
