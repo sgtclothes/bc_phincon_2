@@ -24,7 +24,7 @@ const bodyValidation = (req, res, next) => {
             message: validationError.details,
         });
     }
-    return validationError;
+    next();
 };
 
 const checkDuplicates = async (req, res, next) => {

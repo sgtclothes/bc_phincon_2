@@ -6,12 +6,12 @@ const App = () => {
     const dispatch = useDispatch();
     return (
         <>
-            {/* <div style={{ textAlign: "center" }}>
+            <div style={{ textAlign: "center" }}>
                 <h1>Counter: {count}</h1>
                 <button onClick={() => dispatch({ type: "INCREMENT" })}>Increment</button>
                 <button onClick={() => dispatch({ type: "DECREMENT" })}>Decrement</button>
             </div>
-            <TodoLists /> */}
+            <TodoLists />
             <Articles />
         </>
     );
