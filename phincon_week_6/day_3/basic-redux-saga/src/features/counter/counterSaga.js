@@ -1,11 +1,9 @@
-import { takeEvery, put, delay } from "redux-saga/effects";
-import { incrementByAmount } from "./counterSlice";
-
-function* incrementAsync(action) {
-    yield delay(1000);
-    yield put(incrementByAmount(action.payload));
-}
+import { takeEvery } from "redux-saga/effects";
+import { incrementByAmount, decrementByAmount, decrement, increment } from "./counterSlice";
 
 export default function* counterSaga() {
-    yield takeEvery("counter/incrementAsync", incrementAsync);
+    yield takeEvery("counter/incrementByAmount", incrementByAmount);
+    yield takeEvery("counter/decrementByAmount", decrementByAmount);
+    yield takeEvery("counter/increment", increment);
+    yield takeEvery("counter/decrement", decrement);
 }

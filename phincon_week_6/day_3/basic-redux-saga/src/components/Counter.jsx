@@ -1,5 +1,4 @@
 import { useDispatch, useSelector } from "react-redux";
-import { increment, decrement } from "../features/counter/counterSlice";
 
 const Counter = () => {
     const dispatch = useDispatch();
@@ -8,11 +7,12 @@ const Counter = () => {
     return (
         <div className="counter-page">
             <h1>Counter: {count}</h1>
-            <button onClick={() => dispatch(decrement())}>-</button>
-            <button onClick={() => dispatch(increment())}>+</button>
-            <button onClick={() => dispatch({ type: "counter/incrementAsync", payload: 5 })}>
-                Increment Async by 5
+            <button onClick={() => dispatch({ type: "counter/decrement" })}>-</button>
+            <button onClick={() => dispatch({ type: "counter/increment" })}>+</button>
+            <button onClick={() => dispatch({ type: "counter/incrementByAmount", payload: 5 })}>
+                Increment by 5
             </button>
+            <button onClick={() => dispatch({ type: "counter/decrementByAmount", payload: 10 })}>Decrement By 10</button>
         </div>
     );
 };
